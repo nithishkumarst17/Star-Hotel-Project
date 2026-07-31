@@ -1,6 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi import FastAPI
+from app.api.chat import router
 
+app = FastAPI(
+    title="Hotel AI Assistant"
+)
+
+app.include_router(router)
 app = FastAPI()
 
 class Booking(BaseModel):
@@ -31,3 +38,11 @@ def search(city: str):
 @app.post("/booking")
 def create_booking(data: Booking):
     return data
+
+app.include_router(router)
+
+@app.get("/")
+def home():
+    return {
+        "message": "Star Hotel AI API Running"
+    }

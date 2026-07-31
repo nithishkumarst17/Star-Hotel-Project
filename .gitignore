@@ -1,6 +1,8 @@
-.env
 __pycache__/
 *.pyc
+.venv/
 venv/
-chroma_db/
+.env
+vector_db/
 .vscode/
+.DS_Store
