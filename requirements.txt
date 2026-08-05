@@ -8,3 +8,6 @@ langchain-huggingface
 chromadb
 pypdf
 sentence-transformers
+psycopg[binary]
+sqlalchemy 
+alembic

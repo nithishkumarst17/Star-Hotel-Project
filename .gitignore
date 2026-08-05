@@ -1,8 +1,11 @@
 __pycache__/
 *.pyc
+*.pyo
 .venv/
 venv/
 .env
-vector_db/
+*.db
+postgres_data/
 .vscode/
-.DS_Store
+.idea/
+*.log
