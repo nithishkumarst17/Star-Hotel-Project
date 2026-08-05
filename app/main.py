@@ -1,48 +1,21 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
-from fastapi import FastAPI
-from app.api.chat import router
+
+from app.routers import auth
+from app.routers import hotels
+
 
 app = FastAPI(
-    title="Hotel AI Assistant"
+    title="StarHotel API",
+    version="1.0.0"
 )
 
-app.include_router(router)
-app = FastAPI()
 
-class Booking(BaseModel):
-    name: str
-    room: int
+app.include_router(auth.router)
+app.include_router(hotels.router)
 
-@app.get("/")
-def home():
-    return {"message": "Hotel AI Assistant"}
-
-@app.get("/health")
-def health():
-    return {
-        "status":"healthy"
-    }
-
-@app.get("/room/{room_id}")
-def get_room(room_id: int):
-    return {
-        "room": room_id
-    }
-@app.get("/search")
-def search(city: str):
-    return {
-        "city": city
-    }
-
-@app.post("/booking")
-def create_booking(data: Booking):
-    return data
-
-app.include_router(router)
 
 @app.get("/")
 def home():
     return {
-        "message": "Star Hotel AI API Running"
+        "message": "StarHotel API running"
     }
